@@ -9,8 +9,8 @@ const loading = document.getElementById('loading');
 const loadingBar = document.getElementById('loading-bar');
 
 function calcularY(x, a, b, c) {
-    const expPart = Math.exp(a * (x - b));
-    const y = c + ((1 - c) / (1 + expPart));
+    const logPart = Math.log((1 - c)/(0.51 - c) - 1);
+    const y = 100*((1/a)*logPart + b);
     return y.toFixed(2); 
 }
 
