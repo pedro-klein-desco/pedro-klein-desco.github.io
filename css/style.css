@@ -62,6 +62,28 @@
     background-color: #00E88F;
 }
 
+#loading {
+    display: none;
+    margin-top: 20px;
+}
+
+.tabela {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 18px;
+    text-align: left;
+}
+
+.tabela th, .tabela td {
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+}
+
+.tabela th {
+    background-color: #f2f2f2;
+}
+
 .container {
     font-family: 'Roboto', sans-serif;
     max-width: 600px;

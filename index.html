@@ -39,14 +39,37 @@
                 <textarea id="userText" placeholder="Cole a pergunta aqui..." required></textarea>
                 <button type="submit">Enviar</button>
             </form>
-        
+
+            <div id="loading">Carregando...</div>
+
             <div class="result" id="resultArea" style="display:none;">
+              <table class="tabela">
+                <tr>
+                    <th>Parametro A</th>
+                    <th>Parametro B</th>
+                    <th>Parametro C</th>
+                    <th>TRI</th>
+                </tr>
+                <tr>
+                    <td id="paramA"></td>
+                    <td id="paramB"></td>
+                    <td id="paramC"></td>
+                    <td id="valor_final"></td>
+                </tr>
+            </table>
+            </div>
+        
+
+
+
+
+            <!-- <div class="result" id="resultArea" style="display:none;">
                 <h2>Valor dos parametros:</h2>
                 <p id="paramA"></p>
                 <p id="paramB"></p>
                 <p id="paramC"></p>
                 <p id="valor_final"></p>
-            </div>
+            </div> -->
         </div>
         <br>
         <br>
