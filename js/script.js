@@ -6,6 +6,7 @@ const paramB = document.getElementById('paramB');
 const paramC = document.getElementById('paramC');
 const valorFinal = document.getElementById('valor_final');
 const loading = document.getElementById('loading');
+const loadingBar = document.getElementById('loading-bar');
 
 function calcularY(x, a, b, c) {
     const expPart = Math.exp(a * (x - b));
@@ -18,8 +19,22 @@ form.addEventListener('submit', function(event) {
 
     const apiUrl = 'http://localhost:8000/sintetize/' + userText.value;
 
+    // Mostrar a barra de carregamento e inicializar a animação
     loading.style.display = 'block';
     resultArea.style.display = 'none';
+    loadingBar.style.width = '0%';
+    loadingBar.textContent = '0%';
+
+    // Função para simular o progresso da barra
+    let progress = 0;
+    const interval = setInterval(() => {
+        progress += 10;
+        loadingBar.style.width = progress + '%';
+        loadingBar.textContent = progress + '%';
+        if (progress >= 100) {
+            clearInterval(interval);
+        }
+    }, 100); 
 
     fetch(apiUrl)
         .then(response => response.json())
@@ -31,21 +46,19 @@ form.addEventListener('submit', function(event) {
             const resultsB = `${b.toFixed(2)}`;
             const resultsC = `${c.toFixed(2)}`;
 
-            const resultsValorFinal = calcularY(0.7, a, b, c);
+            const resultsValorFinal = calcularY(0.4 , a, b, c);
 
             paramA.textContent = resultsA;
             paramB.textContent = resultsB;
             paramC.textContent = resultsC;
             valorFinal.textContent = `${resultsValorFinal}`;
 
-            // Esconder a barra de carregamento e mostrar o resultado
             loading.style.display = 'none';
             resultArea.style.display = 'block';
         })
         .catch(error => {
             console.error('Erro ao fazer requisição:', error);
 
-            // Esconder a barra de carregamento em caso de erro
             loading.style.display = 'none';
         });
 });
