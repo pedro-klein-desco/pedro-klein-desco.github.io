@@ -9,7 +9,7 @@ const loading = document.getElementById('loading');
 const loadingBar = document.getElementById('loading-bar');
 
 function calcularY(a, b, c) {
-    const logPart = Math.log((1 - c)/(0.51 - c) - 1);
+    const logPart = Math.log(Math.abs((((1 - c)/(0.51 - c)) - 1)));
     const y = 100*((1/a)*logPart + b);
     return y.toFixed(2); 
 }
@@ -19,13 +19,11 @@ form.addEventListener('submit', function(event) {
 
     const apiUrl = 'http://localhost:8000/sintetize/' + userText.value;
 
-    // Mostrar a barra de carregamento e inicializar a animação
     loading.style.display = 'block';
     resultArea.style.display = 'none';
     loadingBar.style.width = '0%';
     loadingBar.textContent = '0%';
 
-    // Função para simular o progresso da barra
     let progress = 0;
     const interval = setInterval(() => {
         progress += 10;
